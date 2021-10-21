@@ -6,23 +6,28 @@
 					<h1>Quiz</h1>
 				</div>
 
-				<div class="quiz-main" v-for="(element,index) in questions" :key="index">
+				<div class="quiz-main" v-for="(element,index) in questions.slice(a,b)" :key="index">
 					<div class="box-question">
-						<h2>Question</h2>
+						<h2 class="box-question-question">Question {{b}}/{{questions.length}} </h2>
 						<p>{{element.question}}</p>
 					</div>
-					<div class="box-suggestions" v-for="(item,index) in element.suggestions" :key="index">
+					<div class="box-suggestions">
 						<ul>
-							<li>{{item.suggestion}}</li>
+							<!-- 判斷select變數是否為true -->
+							<li v-for="(item,index) in element.suggestions" :key="index" :class="select? check(item):''" @click="selectResponse(item)">{{item.suggestion}}</li>
 						</ul>
 					</div>
 				</div>
 				
 				<div class="box-score">
-					score
+					<h2>Your score is</h2>
+					<h2>{{score}}/{{questions.length}}</h2>
 				</div>
 				<div class="quiz-footer">
-					<h1>footer</h1>
+					<div class="box-button">
+						<button type="button">Skip</button>
+						<button type="button" @click="nextQuestion()">Next</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -81,7 +86,26 @@ export default {
 						{suggestion:"am graduated"}
 					]
 				}
-			]
+			],
+			a:0,
+			b:1,
+			select:false,
+			score:0,
+		}
+	},
+	methods:{
+		selectResponse(item){
+			this.select = true;
+			if (item.correct) return this.score++
+		},
+		check(status){
+			if(status.correct) return "correct";
+			return "incorrect"
+		},
+		nextQuestion(){
+			this.a++,
+			this.b++,
+			this.select = false
 		}
 	}
 };
