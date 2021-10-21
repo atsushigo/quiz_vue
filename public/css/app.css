@@ -123,3 +123,35 @@ li.incorrect{
 	color: white;
 	font-weight: 600;
 }
+
+.box-score{
+	display: flex;
+	width: 100%;
+	height: 70%;
+	flex-flow: column;
+}
+
+.box-score h2{
+	margin-top: 2.5rem;
+}
+
+.btn-restart{
+	display: flex;
+	width: 100%;
+	height: auto;
+	justify-content: center;
+	margin-top: 3.125rem;
+}
+
+.btn-restart button{
+	width: 9.375rem;
+	height: 2.1875rem;
+	outline: none;
+	border: 0;
+	color: white;
+	font-size: 1.125rem;
+	cursor: pointer;
+	border-radius: 0.9375rem;
+	margin: auto;
+	background-color: cornflowerblue;
+}
