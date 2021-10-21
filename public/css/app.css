@@ -162,3 +162,27 @@ li div{
 	margin: auto;
 	background-color: cornflowerblue;
 }
+
+.step-progress{
+	display: flex;
+	width: 100%;
+	height: 0.3125rem;
+	background-color: lightseagreen;
+	transition: 0.5s;
+}
+
+/* RWD */
+@media screen and (max-width:900px) {
+	.container-quiz{
+		width: 60%;
+	}
+}
+
+@media screen and (max-width:720px) {
+	.container-quiz{
+		width: 80%;
+	}
+	.box-button button{
+		width: 6.25rem;
+	}
+}

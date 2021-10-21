@@ -3,7 +3,9 @@
 		<div class="container-app">
 			<div class="container-quiz">
 				<div class="quiz-header"><h1>Quiz</h1></div>
-
+				
+				<div class="step-progress" :style="{'width':progress + '%'}" v-show="progress < 100"></div>
+				
 				<div class="quiz-main" v-for="(element, index) in questions.slice(a, b)" :key="index" v-show="quiz">
 					<div class="box-question">
 						<h2 class="box-question-question">Question {{ b }}/{{ questions.length }}</h2>
@@ -74,6 +76,7 @@ export default {
 			showScore: false,
 			quiz: true,
 			next:false,
+			progress:0
 		};
 	},
 	methods: {
@@ -89,10 +92,11 @@ export default {
 		nextQuestion() {
 			if (!this.next) return;
 			if (this.questions.length - 1 == this.a) {
+				this.progress += 100/this.questions.length;
 				this.showScore = true;
 				this.quiz = false;
 			} else {
-				this.a++, this.b++, (this.select = false),(this.next = false);
+				this.a++, this.b++, (this.select = false),(this.next = false);(this.progress += (100/this.questions.length))
 			}
 			
 		},
@@ -101,8 +105,9 @@ export default {
 			if (this.questions.length - 1 == this.a){
 				this.showScore = true;
 				this.quiz = false;
+				this.progress += 100/this.questions.length;
 			}else{
-				this.a++,this.b++
+				this.a++,this.b++,this.progress += 100/this.questions.length;
 			}
 		},
 		restartQuiz(){
