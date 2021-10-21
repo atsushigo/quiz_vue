@@ -14,6 +14,8 @@
 							<!-- 判斷select變數是否為true -->
 							<li v-for="(item, index) in element.suggestions" :key="index" :class="select ? check(item) : ''" @click="selectResponse(item)">
 								{{ item.suggestion }}
+								<div class="fas fa-check" v-if="select? item.correct:''"></div>
+								<div class="fas fa-times" v-if="select? !item.correct:''"></div>
 							</li>
 						</ul>
 					</div>
@@ -28,8 +30,8 @@
 				</div>
 				<div class="quiz-footer">
 					<div class="box-button">
-						<button type="button" @click="skipQuestion()">Skip</button>
-						<button type="button" @click="nextQuestion()">Next</button>
+						<button type="button" @click="skipQuestion()" :style="!this.next?'background-color:rgb(10,128,202)':''">Skip</button>
+						<button type="button" @click="nextQuestion()" :style="this.next?'background-color:rgb(10,128,202)':''">Next</button>
 					</div>
 				</div>
 			</div>
@@ -70,12 +72,14 @@ export default {
 			select: false,
 			score: 0,
 			showScore: false,
-			quiz: true
+			quiz: true,
+			next:false,
 		};
 	},
 	methods: {
 		selectResponse(item) {
 			this.select = true;
+			this.next = true;
 			if (item.correct) return this.score++;
 		},
 		check(status) {
@@ -83,16 +87,17 @@ export default {
 			return 'incorrect';
 		},
 		nextQuestion() {
+			if (!this.next) return;
 			if (this.questions.length - 1 == this.a) {
 				this.showScore = true;
 				this.quiz = false;
 			} else {
-				this.a++, this.b++, (this.select = false);
+				this.a++, this.b++, (this.select = false),(this.next = false);
 			}
-			console.log("this.$data",this.$data)
 			
 		},
 		skipQuestion(){
+			if (this.next) return;
 			if (this.questions.length - 1 == this.a){
 				this.showScore = true;
 				this.quiz = false;
