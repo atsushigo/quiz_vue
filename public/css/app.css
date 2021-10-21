@@ -55,3 +55,31 @@
 	background-color: lightsteelblue;
 	border-radius: 0px 0px 10px 10px;
 }
+
+.box-question{
+	margin-top: 1.25rem;
+}
+
+.box-suggestions{
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	margin: auto;
+}
+
+ul{
+	display: flex;
+	width: 80%;
+	margin: 0;
+	padding: 0;
+	flex-flow: column;
+}
+
+ul li{
+	list-style: none;
+	line-height: 2;
+	border: 0.0625rem solid white;
+	margin-bottom: 1.25rem;
+	border-radius: 15px;
+	cursor: pointer;
+}

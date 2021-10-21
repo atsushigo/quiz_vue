@@ -7,9 +7,20 @@
 				</div>
 
 				<div class="quiz-main">
-					<h1>main</h1>
+					<div class="box-question">
+						Question
+					</div>
+					<div class="box-suggestions">
+						<ul>
+							<li>1</li>
+							<li>2</li>
+						</ul>
+					</div>
 				</div>
-
+				
+				<div class="box-score">
+					score
+				</div>
 				<div class="quiz-footer">
 					<h1>footer</h1>
 				</div>
