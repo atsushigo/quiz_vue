@@ -124,6 +124,13 @@ li.incorrect{
 	font-weight: 600;
 }
 
+li div{
+	float: right;
+	margin-top: 0.23rem;
+	margin-right: 1.1rem;
+	font-size: 1.875rem;
+}
+
 .box-score{
 	display: flex;
 	width: 100%;
